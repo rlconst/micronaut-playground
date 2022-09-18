@@ -1,3 +1,3 @@
 [submodule "micronaut-data"]
 	path = micronaut-data
-	url = https://github.com/micronaut-projects/micronaut-data.git
+	url = git@github.com:rlconst/micronaut-data.git
