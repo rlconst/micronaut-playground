@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: me.blzr
+testFramework: kotest
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [annotation-api, app-name, data, data-jdbc, gradle, http-client, jackson-databind, jdbc-hikari, kotest, kotlin, kotlin-application, kotlin-build, kotlin-extension-functions, liquibase, logback, micronaut-build, netty-server, postgres, readme, shade, test-resources, testcontainers, yaml]
