@@ -7,23 +7,13 @@ import jakarta.inject.Singleton
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.slf4j.bridge.SLF4JBridgeHandler
-import java.util.*
 
 @Singleton
-class Application(
-    private val entWithUuidRepo: EntWithUuidRepo,
-) : ApplicationEventListener<ServerStartupEvent> {
+class Application : ApplicationEventListener<ServerStartupEvent> {
     val log: Logger = LoggerFactory.getLogger(Application::class.java)
+
     override fun onApplicationEvent(event: ServerStartupEvent?) {
-        val uuid = UUID.randomUUID()
-        entWithUuidRepo.saveAll(
-            listOf(
-                EntWithUuid(null, uuid),
-                EntWithUuid(null, null),
-            )
-        )
-        log.info(entWithUuidRepo.findByUuid(uuid).joinToString { it.id.toString() })
-        log.info(entWithUuidRepo.findByUuid(null).joinToString { it.id.toString() })
+        log.info("Application started")
     }
 
     companion object {
