@@ -22,7 +22,7 @@ interface EntWithUuidRepo : CrudRepository<EntWithUuid, UUID> {
     @Query(
         """
         select * from with_uuid
-        where :value is null or :value = nullable_uuid 
+        where :value is null or :value is not null and :value = nullable_uuid 
     """, nativeQuery = true
     )
     fun findByUuid(value: UUID?): Collection<EntWithUuid>
