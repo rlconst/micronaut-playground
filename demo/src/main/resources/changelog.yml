@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01
+      author: Constantine
+      comment: Create table with two uuid columns
+      changes:
+        - createTable:
+            tableName: with_uuid
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: with_uuid_pkey
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: true
+                  name: nullable_uuid
+                  type: UUID

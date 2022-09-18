@@ -10,7 +10,7 @@ plugins {
 version = "0.1"
 group = "me.blzr"
 
-val kotlinVersion=project.properties.get("kotlinVersion")
+val kotlinVersion = project.properties.get("kotlinVersion")
 repositories {
     mavenCentral()
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
@@ -18,21 +18,28 @@ repositories {
 
 dependencies {
     kapt("io.micronaut.data:micronaut-data-processor")
+    implementation("io.micronaut.data:micronaut-data-jdbc")
     kapt("io.micronaut:micronaut-http-validation")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut.data:micronaut-data-jdbc")
     implementation("io.micronaut.kotlin:micronaut-kotlin-extension-functions")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
+
     implementation("io.micronaut.liquibase:micronaut-liquibase")
+    implementation("org.slf4j:jul-to-slf4j:1.7.36")
+
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("jakarta.annotation:jakarta.annotation-api")
+
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+
     runtimeOnly("ch.qos.logback:logback-classic")
+
     runtimeOnly("org.postgresql:postgresql")
-    testImplementation("org.testcontainers:postgresql")
-    testImplementation("org.testcontainers:testcontainers")
+
+    implementation("org.testcontainers:postgresql")
+    implementation("org.testcontainers:testcontainers")
     implementation("io.micronaut:micronaut-validation")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -41,7 +48,7 @@ dependencies {
 
 
 application {
-    mainClass.set("me.blzr.ApplicationKt")
+    mainClass.set("me.blzr.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
