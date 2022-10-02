@@ -38,7 +38,7 @@ class BodyController : BodyOperations {
     @Post("/customMap", produces = [MediaType.APPLICATION_JSON], consumes = [MediaType.APPLICATION_JSON])
     override fun getBodyCustomMap(
         @Body body: CustomMap
-    ): HashMap<String, String>? {
+    ): Map<String, String> {
         log.info("Map read: $body")
         return body.map
     }
@@ -46,7 +46,7 @@ class BodyController : BodyOperations {
     @Post("/customList", produces = [MediaType.APPLICATION_JSON], consumes = [MediaType.APPLICATION_JSON])
     override fun getBodyCustomList(
         @Body body: CustomList
-    ): ArrayList<String>? {
+    ): List<String> {
         log.info("Map read: $body")
         return body.list
     }
@@ -54,10 +54,10 @@ class BodyController : BodyOperations {
 
 @Introspected
 data class CustomMap(
-    val map: HashMap<String, String>?
+    val map: Map<String, String>
 )
 
 @Introspected
 data class CustomList(
-    val list: ArrayList<String>?
+    val list: List<String>
 )

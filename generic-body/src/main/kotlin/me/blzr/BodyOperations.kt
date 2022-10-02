@@ -15,10 +15,10 @@ interface BodyOperations {
     fun getBodyList(@Body body: List<String>): List<String>
 
     @Post("/customMap")
-    fun getBodyCustomMap(@Body body: CustomMap): Map<String, String>?
+    fun getBodyCustomMap(@Body body: CustomMap): Map<String, String>
 
     @Post("/customList")
-    fun getBodyCustomList(@Body body: CustomList): List<String>?
+    fun getBodyCustomList(@Body body: CustomList): List<String>
 
     @Post("/string")
     fun getBodyString(@Body body: String): String
