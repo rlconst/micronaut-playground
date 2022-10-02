@@ -1,4 +1,4 @@
-package com.example
+package me.blzr
 
 import io.micronaut.runtime.Micronaut.*
 
