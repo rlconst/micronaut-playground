@@ -1,18 +1,25 @@
 package me.blzr
 
 import io.micronaut.core.annotation.Introspected
+import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
-import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-@Controller("/body")
+@Controller("/")
 class BodyController : BodyOperations {
     val log: Logger = LoggerFactory.getLogger(this::class.java)
 
-    @Post("/map")
+    @Post("/string")
+    override fun getBodyString(
+        @Body body: String
+    ): String {
+        return body
+    }
+
+    @Post("/map", produces = [MediaType.APPLICATION_JSON], consumes = [MediaType.APPLICATION_JSON])
     override fun getBodyMap(
         @Body body: Map<String, String>
     ): Map<String, String> {
@@ -20,7 +27,7 @@ class BodyController : BodyOperations {
         return body
     }
 
-    @Post("/list")
+    @Post("/list", produces = [MediaType.APPLICATION_JSON], consumes = [MediaType.APPLICATION_JSON])
     override fun getBodyList(
         @Body body: List<String>
     ): List<String> {
@@ -28,29 +35,29 @@ class BodyController : BodyOperations {
         return body
     }
 
-    @Post("/customMap")
+    @Post("/customMap", produces = [MediaType.APPLICATION_JSON], consumes = [MediaType.APPLICATION_JSON])
     override fun getBodyCustomMap(
         @Body body: CustomMap
-    ): Map<String, String> {
+    ): HashMap<String, String>? {
         log.info("Map read: $body")
         return body.map
     }
 
-    @Post("/customList")
+    @Post("/customList", produces = [MediaType.APPLICATION_JSON], consumes = [MediaType.APPLICATION_JSON])
     override fun getBodyCustomList(
         @Body body: CustomList
-    ): List<String> {
+    ): ArrayList<String>? {
         log.info("Map read: $body")
         return body.list
     }
 }
 
 @Introspected
-class CustomMap(
-    val map: Map<String, String>
+data class CustomMap(
+    val map: HashMap<String, String>?
 )
 
 @Introspected
-class CustomList(
-    val list: List<String>
+data class CustomList(
+    val list: ArrayList<String>?
 )

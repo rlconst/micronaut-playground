@@ -2,8 +2,6 @@ package com.example
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import io.micronaut.runtime.EmbeddedApplication
-import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.kotest.annotation.MicronautTest
 import jakarta.inject.Named
 import me.blzr.BodyOperations
@@ -16,6 +14,11 @@ class DemoTest(
     @Named("client") private val client: BodyOperations,
 ) : StringSpec({
 
+    "test string request" {
+        val str = "FOO"
+        client.getBodyString(str) shouldBe str
+    }
+
     "test map request" {
         val map = mapOf("foo" to "bar", "123" to "890")
         client.getBodyMap(map) shouldBe map
@@ -27,12 +30,12 @@ class DemoTest(
     }
 
     "test custom map request" {
-        val map = mapOf("foo" to "bar", "123" to "890")
+        val map = HashMap(mapOf("foo" to "bar", "123" to "890"))
         client.getBodyCustomMap(CustomMap(map)) shouldBe map
     }
 
     "test custom list request" {
-        val list = listOf("foo", "bar", "baz")
+        val list = ArrayList(listOf("foo", "bar", "baz"))
         client.getBodyCustomList(CustomList(list)) shouldBe list
     }
 })
