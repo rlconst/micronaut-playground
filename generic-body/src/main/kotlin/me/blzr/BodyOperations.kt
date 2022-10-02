@@ -22,4 +22,7 @@ interface BodyOperations {
 
     @Post("/string")
     fun getBodyString(@Body body: String): String
+
+    @Post("/map2")
+    fun getBodyMap2(body: Map<String, String>): Map<String, String>
 }

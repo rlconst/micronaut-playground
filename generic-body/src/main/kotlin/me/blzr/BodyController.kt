@@ -27,6 +27,14 @@ class BodyController : BodyOperations {
         return body
     }
 
+    @Post("/map2")
+    override fun getBodyMap2(
+        @Body body: Map<String, String>
+    ): Map<String, String> {
+        log.info("Map read: $body")
+        return body
+    }
+
     @Post("/list", produces = [MediaType.APPLICATION_JSON], consumes = [MediaType.APPLICATION_JSON])
     override fun getBodyList(
         @Body body: List<String>

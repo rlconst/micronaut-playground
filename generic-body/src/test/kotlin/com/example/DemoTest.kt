@@ -1,5 +1,6 @@
 package com.example
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.micronaut.test.extensions.kotest.annotation.MicronautTest
@@ -22,6 +23,13 @@ class DemoTest(
     "test map request" {
         val map = mapOf("foo" to "bar", "123" to "890")
         client.getBodyMap(map) shouldBe map
+    }
+
+    "test map2 request" {
+        val map = mapOf("foo" to "bar", "123" to "890")
+        shouldThrow<Exception> {
+            client.getBodyMap2(map) shouldBe map
+        }
     }
 
     "test list request" {
