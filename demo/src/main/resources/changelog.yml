@@ -19,3 +19,28 @@ databaseChangeLog:
                     nullable: true
                   name: nullable_uuid
                   type: UUID
+  - changeSet:
+      id: 02
+      author: Constantine
+      comment: Create table with enum field
+      changes:
+        - createTable:
+            tableName: with_enum
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: with_enum_pkey
+                  name: id
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                  name: enum1
+                  type: varchar(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: enum2
+                  type: int

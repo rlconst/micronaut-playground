@@ -44,6 +44,8 @@ dependencies {
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
+
 }
 
 
